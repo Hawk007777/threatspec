@@ -8,6 +8,34 @@
 
 Threatspec is an open source project that aims to close the gap between development and security by bringing the threat modelling process further into the development process. This is achieved by having developers and security engineers write threat modeling annotations as comments inside source code, then dynamically generating reports and data-flow diagrams from the code. This allows engineers to capture the security context of the code they write, as they write it. In a world of everything-as-code, this can include infrastructure-as-code, CI/CD pipelines, and serverless etc. in addition to traditional application code.
 
+## Benefits
+
+### Why use threatspec?
+
+Threatspec brings threat modeling into the development workflow, making security a natural part of writing code rather than an afterthought. Here are the key benefits:
+
+- **Living threat model** – Because annotations live directly in the source code, the threat model automatically stays in sync with the codebase. When code changes, the threat model changes with it. There is no separate document to maintain or remember to update.
+- **Minimal context switching** – Developers capture security concerns in the IDE while writing code, without having to switch to a separate tool, wiki, or document. This lowers the friction of threat modeling and increases the likelihood that important security context is recorded.
+- **Everything-as-code friendly** – Threatspec works with application source code, infrastructure-as-code, CI/CD pipeline definitions, serverless configurations, and OpenAPI/Swagger files. Security context can be captured wherever code is written.
+- **Incremental and collaborative** – Teams can start small, adding annotations gradually as the codebase evolves. Multiple engineers across multiple repositories can contribute to a single, unified threat model view.
+- **Automated reporting** – Running `threatspec report` generates a visual data-flow diagram and a human-readable Markdown report with no manual effort. Reports can be regenerated at any time and fit naturally into CI/CD pipelines.
+- **Flexible output** – In addition to the default Markdown report, threatspec produces JSON output that can be fed into dashboards, databases, or custom tooling, and supports Jinja2 templates for fully custom report formats.
+- **Security debt visibility** – Accepted and exposed threats are tracked explicitly, making accumulated security debt visible to the whole team rather than hidden in private notes or lost in meeting minutes.
+- **Bridges development and security teams** – A shared, code-native threat model gives developers and security engineers a common language and a single source of truth, improving collaboration during design reviews, code reviews, and AppSec assessments.
+
+### Where can threatspec be used?
+
+| Scenario | How threatspec helps |
+|---|---|
+| **Application development** | Annotate application source code (Go, Java, Python, JavaScript, C/C++, etc.) to capture mitigations, exposures, and design decisions as the code is written. |
+| **Infrastructure-as-Code** | Add annotations to Terraform, CloudFormation, Kubernetes manifests, or Ansible playbooks to document the security posture of your infrastructure. |
+| **CI/CD pipelines** | Embed annotations in pipeline definitions and automatically regenerate the threat model report on every build. Use the JSON output to create quality gates that fail the build when too many threats are left exposed. |
+| **Microservices and APIs** | Annotate OpenAPI/Swagger files with `x-threatspec` extensions to keep API security context alongside the API contract. |
+| **Threat modeling sessions** | Use threatspec in a plain-text file during a design session to capture components, connections, and threats on the whiteboard in real time. The annotations can be moved into the relevant source files later. |
+| **Multi-repository services** | Aggregate annotations from many repositories into a single consolidated threat model report using the `imports` configuration, giving a whole-system view across services. |
+| **Security testing** | Use `@tests` annotations in test files to document which tests validate a particular security control, creating living security regression tests. |
+| **AppSec and compliance reviews** | Use the generated report as structured input for penetration tests, internal security reviews, or compliance evidence. |
+
 ## Getting started
 
 ### Step 1 - Install threatspec
